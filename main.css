@@ -1,3 +1,23 @@
+body {
+    overflow: hidden;
+    white-space: nowrap;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    background-image: url('https://external-preview.redd.it/ey8KNEnscUvTP2xjJuT7szhzZKUPEe0W3YI9Z8VvqYs.jpg?auto=webp&s=a1bfe8c1a120e1ff1b818a364f5d330133f28e85');
+    animation: panorama 100s linear infinite;
+}
+
+@keyframes panorama {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+
 #background {
     display: block;
     position: fixed;
@@ -54,7 +74,9 @@ img {
 }
 
 @media (max-width: 600px) {
-    h1, p {
+
+    h1,
+    p {
         font-size: 2rem;
     }
 }
