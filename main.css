@@ -1,0 +1,60 @@
+#background {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.contador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+h1 {
+    margin-top: 100px;
+    font-size: 5rem;
+    text-align: center;
+}
+
+p {
+    margin: 0;
+    font-size: 5rem;
+}
+
+img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#contador {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#copyButton {
+    display: none;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    border-radius: 25%;
+}
+
+#confetes {
+    display: none;
+    position: fixed;
+    z-index: 1;
+}
+
+@media (max-width: 600px) {
+    h1, p {
+        font-size: 2rem;
+    }
+}

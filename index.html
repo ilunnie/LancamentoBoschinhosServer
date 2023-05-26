@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Boschinhos</title>
+
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/minecraftia" type="text/css" />
+    <style type="text/css">
+        body {
+            font-family: 'MinecraftiaRegular';
+            text-shadow: -1px -1px 0px #FFF,
+                -1px 1px 0px #FFF,
+                1px -1px 0px #FFF,
+                1px 0px 0px #FFF;
+            ;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script>
+        // Função para atualizar o contador
+        function updateCounter() {
+            // Obtém a data e hora atual
+            var now = new Date();
+
+            // Define a data alvo para hoje às 23:00
+            var target = new Date(2023, 4, 26, 23, 00, 00);
+
+            // Calcula a diferença em milissegundos entre a data alvo e a atual
+            var difference = target - now;
+
+            // Verifica se a diferença é menor ou igual a zero
+            if (difference <= 0) {
+                minhaFuncaoEspecifica();
+
+                return; // Encerra a função para evitar que o setTimeout seja chamado novamente
+            }
+
+            // Calcula o tempo restante em horas, minutos e segundos
+            var hours = Math.floor(difference / (1000 * 60 * 60));
+            var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Formata os valores com dois dígitos
+            hours = hours.toString().padStart(2, '0');
+            minutes = minutes.toString().padStart(2, '0');
+            seconds = seconds.toString().padStart(2, '0');
+
+            // Atualiza o elemento com o tempo restante
+            document.getElementById('counter').innerHTML = hours + ':' + minutes + ':' + seconds;
+
+            // Atualiza o contador a cada segundo
+            setTimeout(updateCounter, 1000);
+        }
+
+        // Função específica a ser executada quando o contador chegar a zero
+        function minhaFuncaoEspecifica() {
+            // Ativa os confetes
+            document.querySelector("#confetes").style.display = "block";
+
+            // Desativa o contador
+            document.getElementById('counter').innerHTML = 'MineSoParaBoschinhos.enxada.host';
+            var elementosP = document.querySelectorAll('p');
+            elementosP.forEach(function (elemento) {
+                elemento.style.fontSize = '3rem';
+                
+                if (window.innerWidth <= 600) {
+                    elemento.style.fontSize = '1rem';
+                    
+                }
+            });
+
+            // Ativa o botão de copiar
+            document.querySelector("#copyButton").style.display = "block";
+        }
+
+        // Chama a função para iniciar o contador quando a página é carregada
+        window.onload = function () {
+            updateCounter();
+        };
+    </script>
+</head>
+
+<body>
+    <img src="background.jfif" id="background">
+    <img src="background.jfif" id="background" style="filter: blur(5px);">
+    <div class="contador">
+        <h1>Lançamento<br>Servidor dos Boschinhos</h1>
+        <div id="contador">
+            <p><span id="counter"></span></p>
+            <button id="copyButton"><i class="far fa-copy fa-2x"></i></button>
+        </div>
+    </div>
+    <img src="confetti.webp" id="confetes">
+
+
+    <script>
+        // Função para copiar o IP
+        function copyCounter() {
+            // Seleciona o elemento com o id counter
+            var counterElement = document.getElementById('counter');
+
+            // Cria um campo de input temporário
+            var tempInput = document.createElement('input');
+            tempInput.value = counterElement.innerText;
+            document.body.appendChild(tempInput);
+
+            // Copia o conteúdo do input temporário para a área de transferência
+            tempInput.select();
+            document.execCommand('copy');
+
+            // Remove o campo de input temporário
+            document.body.removeChild(tempInput);
+
+            // Exibe uma mensagem ou realiza qualquer outra ação desejada
+            alert('IP copiado!');
+        }
+
+        // Adiciona um ouvinte de evento ao botão para acionar a função de cópia
+        var copyButton = document.getElementById('copyButton');
+        copyButton.addEventListener('click', copyCounter);
+    </script>
+</body>
+
+</html>
